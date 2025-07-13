@@ -1,15 +1,104 @@
 """
-MongoDB database configuration and setup for Mergington High School API
+In-memory database for development/testing - Mergington High School API
 """
 
-from pymongo import MongoClient
 from argon2 import PasswordHasher
 
-# Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')
-db = client['mergington_high']
-activities_collection = db['activities']
-teachers_collection = db['teachers']
+# In-memory storage
+activities_data = {}
+teachers_data = {}
+
+class MockCollection:
+    def __init__(self, data_dict):
+        self.data = data_dict
+    
+    def count_documents(self, query):
+        return len(self.data)
+    
+    def insert_one(self, document):
+        doc_id = document.get("_id")
+        if doc_id:
+            self.data[doc_id] = document
+    
+    def find(self, query=None):
+        if query is None:
+            return [dict(doc, _id=doc_id) for doc_id, doc in self.data.items()]
+        
+        # Simple query handling for basic cases
+        results = []
+        for doc_id, doc in self.data.items():
+            if self._matches_query(doc, query):
+                results.append(dict(doc, _id=doc_id))
+        return results
+    
+    def _matches_query(self, doc, query):
+        for key, condition in query.items():
+            if "." in key:
+                # Handle nested field queries like "schedule_details.days"
+                parts = key.split(".")
+                value = doc
+                for part in parts:
+                    if isinstance(value, dict) and part in value:
+                        value = value[part]
+                    else:
+                        return False
+            else:
+                value = doc.get(key)
+            
+            if isinstance(condition, dict):
+                if "$in" in condition:
+                    if value is None or not any(item in value for item in condition["$in"]):
+                        return False
+                elif "$gte" in condition:
+                    if value is None or value < condition["$gte"]:
+                        return False
+                elif "$lte" in condition:
+                    if value is None or value > condition["$lte"]:
+                        return False
+            else:
+                if value != condition:
+                    return False
+        return True
+    
+    def find_one(self, query):
+        if isinstance(query, dict) and "_id" in query:
+            return self.data.get(query["_id"])
+        
+        results = self.find(query)
+        return results[0] if results else None
+    
+    def update_one(self, filter_query, update_query):
+        if isinstance(filter_query, dict) and "_id" in filter_query:
+            doc_id = filter_query["_id"]
+            if doc_id in self.data:
+                if "$push" in update_query:
+                    for field, value in update_query["$push"].items():
+                        if field in self.data[doc_id]:
+                            self.data[doc_id][field].append(value)
+                        else:
+                            self.data[doc_id][field] = [value]
+                elif "$pull" in update_query:
+                    for field, value in update_query["$pull"].items():
+                        if field in self.data[doc_id] and isinstance(self.data[doc_id][field], list):
+                            if value in self.data[doc_id][field]:
+                                self.data[doc_id][field].remove(value)
+                return type('MockResult', (), {'modified_count': 1})()
+        return type('MockResult', (), {'modified_count': 0})()
+    
+    def aggregate(self, pipeline):
+        # Simple aggregation for getting unique days
+        if len(pipeline) == 3 and pipeline[0].get("$unwind") == "$schedule_details.days":
+            days = set()
+            for doc in self.data.values():
+                if "schedule_details" in doc and "days" in doc["schedule_details"]:
+                    for day in doc["schedule_details"]["days"]:
+                        days.add(day)
+            return [{"_id": day} for day in sorted(days)]
+        return []
+
+# Mock MongoDB collections
+activities_collection = MockCollection(activities_data)
+teachers_collection = MockCollection(teachers_data)
 
 # Methods
 def hash_password(password):
@@ -165,7 +254,7 @@ initial_activities = {
         "participants": ["william@mergington.edu", "jacob@mergington.edu"]
     },
     "Manga Maniacs": {
-        "description": "Dive into epic adventures and unforgettable characters! From action-packed shonen battles to heartwarming slice-of-life stories, discover the incredible world of Japanese manga. Share your favorite series, discuss plot twists, and explore the amazing art that brings these stories to life!",
+        "description": "Explore the fantastic stories of the most interesting characters from Japanese Manga (graphic novels).",
         "schedule": "Tuesdays, 7:00 PM - 8:30 PM",
         "schedule_details": {
             "days": ["Tuesday"],
@@ -197,4 +286,3 @@ initial_teachers = [
         "role": "admin"
     }
 ]
-
