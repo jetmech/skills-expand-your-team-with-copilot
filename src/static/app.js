@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeLoginModal = document.querySelector(".close-login-modal");
   const loginMessage = document.getElementById("login-message");
 
+  // Dark mode elements
+  const darkModeToggle = document.getElementById("dark-mode-toggle");
+  const themeIcon = document.querySelector(".theme-icon");
+
   // Activity categories with corresponding colors
   const activityTypes = {
     sports: { label: "Sports", color: "#e8f5e9", textColor: "#2e7d32" },
@@ -43,6 +47,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Authentication state
   let currentUser = null;
+
+  // Dark mode functionality
+  function initializeDarkMode() {
+    // Check for saved dark mode preference or default to light mode
+    const savedTheme = localStorage.getItem("darkMode");
+    const isDarkMode = savedTheme === "true";
+    
+    if (isDarkMode) {
+      document.body.classList.add("dark-mode");
+      updateThemeIcon(true);
+    } else {
+      updateThemeIcon(false);
+    }
+  }
+
+  function toggleDarkMode() {
+    const isDarkMode = document.body.classList.toggle("dark-mode");
+    localStorage.setItem("darkMode", isDarkMode.toString());
+    updateThemeIcon(isDarkMode);
+  }
+
+  function updateThemeIcon(isDarkMode) {
+    if (themeIcon) {
+      themeIcon.textContent = isDarkMode ? "☀️" : "🌙";
+    }
+    
+    // Update the button title for accessibility
+    if (darkModeToggle) {
+      darkModeToggle.title = isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode";
+    }
+  }
 
   // Time range mappings for the dropdown
   const timeRanges = {
@@ -238,6 +273,9 @@ document.addEventListener("DOMContentLoaded", () => {
   loginButton.addEventListener("click", openLoginModal);
   logoutButton.addEventListener("click", logout);
   closeLoginModal.addEventListener("click", closeLoginModalHandler);
+
+  // Event listener for dark mode toggle
+  darkModeToggle.addEventListener("click", toggleDarkMode);
 
   // Close login modal when clicking outside
   window.addEventListener("click", (event) => {
@@ -864,6 +902,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Initialize app
+  initializeDarkMode();
   checkAuthentication();
   initializeFilters();
   fetchActivities();
