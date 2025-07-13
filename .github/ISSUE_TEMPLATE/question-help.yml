@@ -1,0 +1,179 @@
+name: ❓ Question or Help Request
+description: Ask questions about the system or request help with using features
+title: "[QUESTION] "
+labels: ["question", "help-wanted", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to ask questions about how the activities system works or to get help with using features.
+
+  - type: input
+    id: question_summary
+    attributes:
+      label: Question Summary
+      description: What do you need help with?
+      placeholder: "Example: How do I add a new activity to the system?"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: question_type
+    attributes:
+      label: Type of Question
+      description: What kind of help do you need?
+      options:
+        - How to use a feature
+        - How to add/edit activity information
+        - How to manage student registrations
+        - How to access teacher functions
+        - Understanding system behavior
+        - Training or documentation request
+        - Best practices question
+        - Technical support
+        - Other question
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user_role
+    attributes:
+      label: Your Role
+      description: What is your role in relation to the activities system?
+      options:
+        - Teacher/Activity Coordinator
+        - School Administrator
+        - IT Staff
+        - Student (getting help for students)
+        - Parent/Guardian
+        - Other staff member
+    validations:
+      required: true
+
+  - type: textarea
+    id: detailed_question
+    attributes:
+      label: Detailed Question
+      description: Please explain what you're trying to do and what you need help with
+      placeholder: |
+        Example:
+        I'm the new Chess Club coordinator and I need to update our meeting times from Mondays/Fridays to Tuesdays/Thursdays. I also want to change our description and set a limit of 15 students. I've logged into the teacher portal but I can't find where to edit this information.
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_tried
+    attributes:
+      label: What Have You Already Tried?
+      description: What steps have you already attempted?
+      placeholder: |
+        Example:
+        - Logged into the teacher portal
+        - Looked through all the menu options
+        - Tried clicking on Chess Club but don't see edit options
+        - Asked other teachers but they weren't sure
+        - Checked the user guide but couldn't find instructions
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected_outcome
+    attributes:
+      label: What Are You Trying to Achieve?
+      description: What would be the ideal result or solution?
+      placeholder: |
+        Example:
+        - Be able to update activity schedule and description
+        - Have the changes show up on the student-facing activities page
+        - Set enrollment limits so only 15 students can register
+        - Students should see the updated information immediately
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this?
+      description: How quickly do you need help with this?
+      options:
+        - Low - Can wait, just curious
+        - Medium - Would like help this week
+        - High - Need help in 1-2 days
+        - Urgent - Need help today/ASAP
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help us understand your question
+      placeholder: |
+        Example:
+        - This is for a new semester starting Monday
+        - Students have been asking about updated information
+        - Need to coordinate with other activity changes
+        - This affects multiple teachers
+        - Related to upcoming school event
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: help_type
+    attributes:
+      label: Type of Help Needed
+      description: What kind of assistance would be most helpful?
+      options:
+        - label: Step-by-step instructions
+        - label: Screenshots or video walkthrough
+        - label: Direct assistance/training session
+        - label: Documentation or user guide
+        - label: Feature enhancement (if current system can't do this)
+        - label: Best practices recommendations
+
+  - type: input
+    id: preferred_contact
+    attributes:
+      label: Preferred Contact Method (Optional)
+      description: How would you prefer to receive help?
+      placeholder: "Example: Email, phone call, in-person meeting, online video call"
+    validations:
+      required: false
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline (if any)
+      description: Is there a specific date you need this resolved by?
+      placeholder: "Example: Before Monday's classes start, By Friday registration deadline"
+    validations:
+      required: false
+
+  - type: textarea
+    id: related_questions
+    attributes:
+      label: Related Questions
+      description: Are there other related questions or help requests?
+      placeholder: |
+        Example:
+        - Also need help with managing student enrollments
+        - Want to understand how to export registration lists
+        - Curious about adding new activities for next semester
+        - Need training on other teacher features
+    validations:
+      required: false
+
+  - type: textarea
+    id: system_access
+    attributes:
+      label: System Access Information
+      description: Do you have the necessary access permissions? Any login issues?
+      placeholder: |
+        Example:
+        - Have teacher login credentials and can access teacher portal
+        - Can see some features but not others
+        - Getting permission errors when trying certain actions
+        - Not sure if I have the right level of access
+    validations:
+      required: false

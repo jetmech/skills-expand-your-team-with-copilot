@@ -1,0 +1,201 @@
+name: 🎨 UI/UX Improvement
+description: Request improvements to the user interface or user experience
+title: "[UI/UX] "
+labels: ["ui/ux", "enhancement", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to suggest improvements to how the activities system looks or works for users.
+
+  - type: input
+    id: improvement_title
+    attributes:
+      label: Improvement Title
+      description: What aspect of the interface would you like to improve?
+      placeholder: "Example: Make activity registration buttons more visible"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area needs improvement?
+      description: Where in the system is this improvement needed?
+      options:
+        - Main activities page
+        - Activity registration process
+        - Teacher login/dashboard
+        - Search and filtering
+        - Mobile/tablet experience
+        - Activity details display
+        - Navigation/menu
+        - Error messages and feedback
+        - Overall layout and design
+        - Accessibility features
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user_affected
+    attributes:
+      label: Who would benefit from this improvement?
+      description: Which users are having difficulty with this area?
+      options:
+        - Students
+        - Teachers
+        - Both students and teachers
+        - Parents/guardians viewing the system
+        - Users on mobile devices
+        - Users with accessibility needs
+        - All users
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_problem
+    attributes:
+      label: Current Problem
+      description: What's difficult or confusing about how it works now?
+      placeholder: |
+        Example:
+        Students are having trouble finding the registration button because it's too small and blends in with the background. Several students have asked teachers how to sign up because they can't locate the button.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_improvement
+    attributes:
+      label: Proposed Improvement
+      description: How would you like this to work or look instead?
+      placeholder: |
+        Example:
+        - Make registration buttons larger and more prominent
+        - Use a bright color that stands out (like green or blue)
+        - Add an icon to the button (like a "+" or "join" symbol)
+        - Position the button more prominently at the top of each activity card
+        - Add hover effects to make it clear it's clickable
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_benefit
+    attributes:
+      label: User Benefit
+      description: How will this improvement help users?
+      placeholder: |
+        Example:
+        - Students will be able to register more easily
+        - Fewer support questions for teachers
+        - More students will participate in activities
+        - Better user experience on mobile devices
+        - Improved accessibility for users with vision difficulties
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this improvement?
+      options:
+        - Low - Nice to have, would be a small improvement
+        - Medium - Would solve a noticeable problem
+        - High - Important for user satisfaction
+        - Critical - Current design is causing significant problems
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_feedback
+    attributes:
+      label: User Feedback/Complaints
+      description: What have students, teachers, or others said about this area?
+      placeholder: |
+        Example:
+        - "I couldn't find how to register"
+        - "The text is too small to read on my phone"
+        - "I didn't know that was a clickable button"
+        - "The page looks outdated"
+        - Multiple teachers mentioned this in our staff meeting
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Success Criteria
+      description: How will we know this improvement is successful?
+      placeholder: |
+        Example:
+        - Students can easily find and click registration buttons
+        - Registration process takes fewer clicks
+        - Fewer questions from students about how to sign up
+        - Design looks modern and professional
+        - Works well on both desktop and mobile
+        - Meets accessibility guidelines
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: devices
+    attributes:
+      label: Device Considerations
+      description: Which devices should this improvement work on?
+      options:
+        - label: Desktop computers
+        - label: Laptops
+        - label: Tablets (iPad, Android tablets)
+        - label: Mobile phones
+        - label: All devices (responsive design)
+
+  - type: checkboxes
+    id: accessibility
+    attributes:
+      label: Accessibility Considerations
+      description: Should this improvement include accessibility features?
+      options:
+        - label: High contrast mode support
+        - label: Screen reader compatibility
+        - label: Keyboard navigation
+        - label: Large text/zoom support
+        - label: Color-blind friendly design
+
+  - type: textarea
+    id: design_inspiration
+    attributes:
+      label: Design Inspiration or Examples
+      description: Any examples, mockups, or other websites that show what you have in mind?
+      placeholder: |
+        Example:
+        - Similar to how Google Classroom shows assignment buttons
+        - Like the sign-up buttons on our school's main website
+        - Could attach a screenshot or sketch
+        - Reference to other school activity systems
+    validations:
+      required: false
+
+  - type: textarea
+    id: technical_constraints
+    attributes:
+      label: Technical Constraints or Considerations
+      description: Any limitations or requirements to keep in mind?
+      placeholder: |
+        Example:
+        - Must work with existing color scheme
+        - Should match school branding guidelines
+        - Needs to work without JavaScript for basic functionality
+        - Should not require major code restructuring
+        - Must load quickly on slow internet connections
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: Additional Notes
+      description: Any other details about this improvement
+      placeholder: "Any other relevant information, related improvements, or context"
+    validations:
+      required: false

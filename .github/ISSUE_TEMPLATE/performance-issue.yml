@@ -1,0 +1,226 @@
+name: ⚡ Performance Issue
+description: Report slow loading, timeouts, or other performance problems
+title: "[PERFORMANCE] "
+labels: ["performance", "bug", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to report performance issues like slow loading pages, timeouts, or system responsiveness problems.
+
+  - type: input
+    id: performance_issue
+    attributes:
+      label: Performance Issue Summary
+      description: What performance problem are you experiencing?
+      placeholder: "Example: Activities page takes too long to load"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Type of Performance Issue
+      description: What kind of performance problem is this?
+      options:
+        - Page loads slowly
+        - System freezes or becomes unresponsive
+        - Registration/submission takes too long
+        - Search results appear slowly
+        - Images or content don't load
+        - System times out
+        - High memory usage
+        - App crashes or errors under load
+        - Slow response when many users online
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does this happen?
+      description: Is this a consistent problem or occasional?
+      options:
+        - Every time I use the system
+        - Most of the time (more than 75%)
+        - Sometimes (25-75% of the time)
+        - Rarely (less than 25%)
+        - Only during specific times (peak usage)
+        - Only on certain devices/browsers
+    validations:
+      required: true
+
+  - type: textarea
+    id: when_occurs
+    attributes:
+      label: When Does This Occur?
+      description: When do you notice this performance issue?
+      placeholder: |
+        Example:
+        - During lunch period when many students are registering
+        - When loading the page with all activities
+        - After clicking the search button
+        - During the first week of school when registration is open
+        - On Monday mornings when teachers are updating activities
+    validations:
+      required: true
+
+  - type: input
+    id: load_time
+    attributes:
+      label: How Long Does It Take?
+      description: Approximately how long do you have to wait?
+      placeholder: "Example: 30 seconds, 2-3 minutes, Eventually times out"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact_level
+    attributes:
+      label: Impact on Users
+      description: How does this affect students and teachers?
+      options:
+        - Minor inconvenience - system still works
+        - Noticeable delay but manageable
+        - Significant problem - affects daily use
+        - Major issue - prevents completing tasks
+        - Critical - system is unusable
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected_users
+    attributes:
+      label: Who Is Affected?
+      description: Which users are experiencing this performance issue?
+      placeholder: |
+        Example:
+        - All students trying to register
+        - Teachers using the admin features
+        - Users on mobile devices
+        - Everyone during peak registration times
+        - Specific activities with many participants
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce the Issue
+      description: How can someone else experience this performance problem?
+      placeholder: |
+        Example:
+        1. Go to the activities page
+        2. Try to load all activities
+        3. Notice page takes 45+ seconds to load
+        4. Some activity cards don't appear
+        5. Registration buttons don't work until fully loaded
+    validations:
+      required: true
+
+  - type: input
+    id: device_info
+    attributes:
+      label: Device and Browser Information
+      description: What device and browser are you using?
+      placeholder: "Example: Chrome on Windows laptop, Safari on iPhone, Firefox on school computer"
+    validations:
+      required: true
+
+  - type: input
+    id: internet_connection
+    attributes:
+      label: Internet Connection
+      description: What type of internet connection are you using?
+      placeholder: "Example: School WiFi, Home broadband, Mobile data, Slow DSL"
+    validations:
+      required: false
+
+  - type: textarea
+    id: error_messages
+    attributes:
+      label: Error Messages
+      description: Do you see any error messages related to this performance issue?
+      placeholder: |
+        Example:
+        - "Request timeout"
+        - "Page unresponsive"
+        - "Server error 500"
+        - "Connection lost"
+        - Browser shows "Page not responding"
+    validations:
+      required: false
+
+  - type: textarea
+    id: workarounds
+    attributes:
+      label: Workarounds or Temporary Solutions
+      description: Have you found any ways to work around this issue?
+      placeholder: |
+        Example:
+        - Refreshing the page multiple times
+        - Using a different browser
+        - Accessing during off-peak hours
+        - Clearing browser cache
+        - Using mobile app instead of website
+    validations:
+      required: false
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this fix?
+      description: How quickly does this performance issue need to be resolved?
+      options:
+        - Low - Can be improved over time
+        - Medium - Should be fixed in a few weeks
+        - High - Needs to be fixed soon (within a week)
+        - Critical - Urgent, affecting daily operations
+    validations:
+      required: true
+
+  - type: textarea
+    id: business_impact
+    attributes:
+      label: Impact on School Operations
+      description: How does this performance issue affect school activities or operations?
+      placeholder: |
+        Example:
+        - Students miss registration deadlines because system is too slow
+        - Teachers can't update activities efficiently
+        - Causes frustration and reduces participation
+        - Parents complain about system being unreliable
+        - IT department gets many support requests
+    validations:
+      required: true
+
+  - type: textarea
+    id: peak_usage
+    attributes:
+      label: Peak Usage Information
+      description: When do most people use the system? This helps identify load patterns.
+      placeholder: |
+        Example:
+        - First week of each semester for registration
+        - Daily during lunch period (12:00-1:00 PM)
+        - After school hours (3:00-6:00 PM)
+        - Monday mornings when teachers update schedules
+        - Beginning and end of school year
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Technical Information
+      description: Any other details that might help diagnose the performance issue
+      placeholder: |
+        Example:
+        - Browser console errors
+        - Network tab showing slow requests
+        - System resource usage observations
+        - Comparison with other similar systems
+        - Recent changes that might have caused this
+    validations:
+      required: false

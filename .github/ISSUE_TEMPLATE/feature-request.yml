@@ -1,0 +1,139 @@
+name: ✨ Feature Request
+description: Request new functionality for the school activities system
+title: "[FEATURE] "
+labels: ["enhancement", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature! Your ideas help make the activities system better for everyone.
+
+  - type: input
+    id: feature_title
+    attributes:
+      label: Feature Title
+      description: What feature would you like to add?
+      placeholder: "Example: Add ability to set activity capacity limits"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_description
+    attributes:
+      label: Problem This Solves
+      description: What problem or need would this feature address?
+      placeholder: |
+        Example: Right now we can't limit how many students can join an activity. Some activities like Chess Club only have 12 seats, but unlimited students can sign up, causing confusion.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution
+      description: How would you like this feature to work?
+      placeholder: |
+        Example: 
+        - Teachers should be able to set a maximum number of participants for each activity
+        - When an activity reaches capacity, the registration button should be disabled
+        - Students should see "Activity Full" message instead of registration button
+        - Teachers should see current enrollment count vs. maximum
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user_type
+    attributes:
+      label: Who would use this feature?
+      description: Select the primary users of this feature
+      options:
+        - Students
+        - Teachers
+        - Both students and teachers
+        - School administrators
+        - Parents/guardians
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this feature?
+      description: How much would this improve the system?
+      options:
+        - Nice to have - would be convenient
+        - Useful - would solve a minor problem
+        - Important - would solve a significant problem
+        - Critical - essential for proper operation
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this feature is complete and working correctly?
+      placeholder: |
+        Example:
+        - ✓ Teachers can set capacity limits when creating/editing activities
+        - ✓ Registration is disabled when activity reaches capacity
+        - ✓ Students see clear messaging when activity is full
+        - ✓ Current enrollment count is visible to teachers
+        - ✓ System prevents over-enrollment
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_stories
+    attributes:
+      label: User Stories
+      description: Describe how different users would interact with this feature
+      placeholder: |
+        Example:
+        - As a teacher, I want to set capacity limits so I don't get more students than I can handle
+        - As a student, I want to see if an activity is full before trying to register
+        - As an administrator, I want to see enrollment statistics for planning purposes
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical_hints
+    attributes:
+      label: Technical Hints or Suggestions
+      description: Any ideas about how this could be implemented? (Optional but helpful)
+      placeholder: |
+        Example:
+        - Add max_participants field to activity database
+        - Update registration endpoint to check capacity
+        - Modify frontend to show enrollment status
+        - Add validation to prevent over-enrollment
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Are there other ways this problem could be solved?
+      placeholder: "Example: Manual waitlists, first-come-first-served with cutoff dates, etc."
+    validations:
+      required: false
+
+  - type: textarea
+    id: related_features
+    attributes:
+      label: Related Features
+      description: Are there other features that would work well with this one?
+      placeholder: "Example: Waitlist functionality, automated notifications, priority registration"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help implement this feature
+      placeholder: "Screenshots, examples from other systems, links to references, etc."
+    validations:
+      required: false

@@ -1,5 +1,7 @@
 # Development Guide
 
+> **For Teachers:** If you need to request changes to the system but aren't comfortable with technical development, please see our [Teacher Issue Templates Guide](teacher-issue-templates.md) for easy-to-use request forms.
+
 ## Initial Setup
 
 This project is best developed using GitHub Codespaces, which provides a consistent development environment with all the necessary tools pre-configured.
