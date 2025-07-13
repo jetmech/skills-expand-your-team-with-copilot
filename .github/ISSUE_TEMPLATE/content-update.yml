@@ -1,0 +1,160 @@
+name: 📝 Content Update
+description: Request changes to text, activity information, or data in the system
+title: "[CONTENT] "
+labels: ["content", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request updates to activity information, text content, or data in the system.
+
+  - type: input
+    id: content_type
+    attributes:
+      label: What needs to be updated?
+      description: Briefly describe what content needs to change
+      placeholder: "Example: Chess Club meeting times need to be updated"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: update_type
+    attributes:
+      label: Type of Content Update
+      description: What kind of content change is this?
+      options:
+        - Activity information (schedule, description, etc.)
+        - Add new activity
+        - Remove activity
+        - Update teacher information
+        - Change website text/labels
+        - Fix typos or grammar
+        - Update contact information
+        - Other content change
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_content
+    attributes:
+      label: Current Content
+      description: What does it say now? (Copy the exact text if possible)
+      placeholder: |
+        Example:
+        Chess Club
+        Description: Learn strategies and compete in chess tournaments
+        Schedule: Mondays and Fridays, 3:15 PM - 4:45 PM
+    validations:
+      required: true
+
+  - type: textarea
+    id: new_content
+    attributes:
+      label: New Content
+      description: What should it say instead? (Provide exact text you want)
+      placeholder: |
+        Example:
+        Chess Club
+        Description: Learn chess strategies, compete in tournaments, and develop critical thinking skills
+        Schedule: Tuesdays and Thursdays, 3:30 PM - 5:00 PM
+        Max participants: 15 students
+    validations:
+      required: true
+
+  - type: input
+    id: activity_name
+    attributes:
+      label: Activity Name (if applicable)
+      description: Which specific activity does this update relate to?
+      placeholder: "Example: Chess Club, Soccer Team, Art Club"
+    validations:
+      required: false
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Change
+      description: Why does this content need to be updated?
+      placeholder: |
+        Example: 
+        - Schedule changed due to gym availability
+        - Need to correct outdated information
+        - Adding missing details that students need
+        - Teacher requested more detailed description
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this update?
+      description: When does this need to be changed?
+      options:
+        - Low - Can be updated anytime
+        - Medium - Should be updated this week
+        - High - Needs to be updated in 1-2 days
+        - Critical - Urgent, students need correct info now
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact if Not Updated
+      description: What happens if this content isn't changed?
+      placeholder: |
+        Example:
+        - Students will show up at wrong time/place
+        - Incorrect information will confuse parents
+        - Students won't know activity requirements
+        - Registration will be affected
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline (if any)
+      description: Is there a specific date this needs to be updated by?
+      placeholder: "Example: Before Friday's announcements, By registration deadline"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: approval
+    attributes:
+      label: Content Approval
+      description: Has this content change been approved by relevant parties?
+      options:
+        - label: This content change has been approved by the activity coordinator
+        - label: This information is accurate and ready to publish
+        - label: I have verified this information with the relevant teacher/staff
+
+  - type: textarea
+    id: additional_details
+    attributes:
+      label: Additional Details
+      description: Any other information about this content update
+      placeholder: |
+        Example:
+        - Related changes needed elsewhere
+        - Contact person for questions
+        - File attachments or references
+        - Special formatting requirements
+    validations:
+      required: false
+
+  - type: textarea
+    id: technical_notes
+    attributes:
+      label: Technical Implementation Notes
+      description: For complex changes, any hints about where this content appears in the system
+      placeholder: |
+        Example:
+        - This appears on the main activities page
+        - Also need to update the schedule in the database
+        - This information shows in student registration emails
+        - May need to update multiple places
+    validations:
+      required: false

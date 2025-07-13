@@ -1,0 +1,107 @@
+name: 🐛 Bug Report
+description: Report something that isn't working correctly in the school activities system
+title: "[BUG] "
+labels: ["bug", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a bug! This helps us keep the activities system working smoothly for students and teachers.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Problem Summary
+      description: What isn't working as expected?
+      placeholder: "Example: Students can't sign up for Chess Club"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Detailed Description
+      description: Please explain what's happening and what you expected to happen instead
+      placeholder: |
+        Example: When students try to register for Chess Club by clicking the "Register" button, they get an error message saying "Registration failed" instead of being successfully enrolled.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can someone else see this problem? Please list the exact steps.
+      placeholder: |
+        1. Go to the activities page
+        2. Click on Chess Club
+        3. Click "Register" 
+        4. Enter student email
+        5. Click submit
+        6. See error message
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected_users
+    attributes:
+      label: Who is affected?
+      description: Select who is experiencing this problem
+      options:
+        - Students trying to register
+        - Teachers trying to manage activities
+        - Both students and teachers
+        - Only specific activities
+        - Everyone using the system
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this?
+      description: How quickly does this need to be fixed?
+      options:
+        - Low - Can wait a few weeks
+        - Medium - Should be fixed in a week
+        - High - Needs to be fixed this week
+        - Critical - Preventing students from registering
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: What's the impact?
+      description: How is this affecting students or teachers?
+      placeholder: "Example: Students can't join activities before the deadline next Friday"
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser/Device Info (if relevant)
+      description: What browser or device were you using when this happened?
+      placeholder: "Example: Chrome on Windows laptop, Safari on iPad"
+    validations:
+      required: false
+
+  - type: textarea
+    id: error_message
+    attributes:
+      label: Error Message (if any)
+      description: If you see an error message, please copy it exactly here
+      placeholder: "Copy and paste any error messages you see"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information
+      description: Any other details that might help us understand the problem
+      placeholder: "Any other relevant information..."
+    validations:
+      required: false

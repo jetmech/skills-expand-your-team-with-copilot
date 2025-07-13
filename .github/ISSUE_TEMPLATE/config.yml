@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: /docs/how-to-develop.md
+    about: Read the development guide for technical information
+  - name: 🎓 GitHub Skills Course
+    url: https://skills.github.com
+    about: Learn more about GitHub Skills and Copilot
+  - name: 🏫 School IT Support
+    url: #
+    about: Contact your school's IT department for urgent technical issues
